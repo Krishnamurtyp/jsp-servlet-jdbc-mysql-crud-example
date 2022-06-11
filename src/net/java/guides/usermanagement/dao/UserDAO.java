@@ -11,10 +11,17 @@ import java.util.List;
 import net.java.guides.usermanagement.model.User;
 
 public class UserDAO {
-	QNAP-MYSQL-SERVER-ADDRESS1
-	private String jdbcURL = "jdbc:mysql://localhost:3306/crud_example?useSSL=false";
-	private String jdbcUsername = "root";
-	private String jdbcPassword = "1234";
+// 	Before using these variables (SERVER-ADDRESS, MYSQL-SERVER-UN, MYSQL-SERVER-PW) 
+// 	they have to be declared in the System Environments variable list.
+// 	I declared them as System Variables, but you may declare them as User variables too.
+	String serverUrl = System.getenv("SERVER-ADDRESS");	
+	private String jdbcURL = "jdbc:mysql://" + SERVER-ADDRESS + ":3306/crud_example?useSSL=false";
+	private String jdbcUsername =  System.getenv("MYSQL-SERVER-UN");
+	private String jdbcPassword =  System.getenv("MYSQL-SERVER-PW");
+	
+// 	Old credentials:
+// 	private String jdbcUsername = "user-root";
+// 	private String jdbcPassword = "some-password";
 	
 	private static final String INSERT_USERS_SQL = "INSERT INTO users" + " (name, email, country) VALUES " + " (?, ?, ?);";
 	
